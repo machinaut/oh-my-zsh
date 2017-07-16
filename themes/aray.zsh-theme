@@ -7,7 +7,11 @@ function _k8sctx() {
   echo "%{$fg[yellow]%}$k8sctx%{$reset_color%}"
 }
 
-PROMPT='${ret_status} $(_k8sctx) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+function _docify_env(){
+    echo "%{$fg[magenta]%}${DOCIFY_ENV}%{$reset_color%}"
+}
+
+PROMPT='${ret_status} $(_k8sctx) $(_docify_env) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
